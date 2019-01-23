@@ -12,6 +12,7 @@ RUN [[ "x${gid}" = "x" ]] || sed -i "/:${gid}:/d" /etc/group
 RUN [[ "x${gid}" = "x" ]] || addgroup -g ${gid} -S fluent
 RUN [[ "x${gid}" = "x" || "x${uid}" = "x" ]] || adduser -u ${uid} -G fluent -D -S fluent
 
+RUN mkdir -p /fluentd/log /fluentd/sockets
 RUN chown -R fluent:fluent /fluentd
 
 USER fluent
